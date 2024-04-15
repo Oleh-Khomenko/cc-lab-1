@@ -1,5 +1,5 @@
 # Watchtower
-FROM containrrr/watchtower
+FROM containrrr/watchtower:arm64v8-latest
 
 # Nginx
 FROM nginx:latest
