@@ -10,13 +10,15 @@ resource "aws_instance" "my-instance" {
 
   user_data = <<-EOF
                 #!/bin/bash
-                sudo apt-get update
-                sudo apt-get install -y docker.io
+                sudo yum update -y
+                sudo yum install docker
                 sudo systemctl start docker
                 sudo systemctl enable docker
+                sudo usermod -a -G docker $USER
+                newgrp docker
                 docker pull olehkhomenko/lab_1:latest
                 docker run -d -p 80:80 olehkhomenko/lab_1:latest
-                docker run -d --name watchtower --privileged -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --interval 60
+                docker run -d --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --interval 60
               EOF
 
   tags = {
