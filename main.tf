@@ -16,7 +16,7 @@ resource "aws_instance" "my-instance" {
                 sudo systemctl enable docker
                 sudo docker pull olehkhomenko/lab_1:latest
                 sudo docker run -d -p 80:80 olehkhomenko/lab_1:latest
-                sudo docker run -d --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --interval 60
+                sudo docker run -d --name watchtower --privileged -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --interval 60
               EOF
 
   tags = {
