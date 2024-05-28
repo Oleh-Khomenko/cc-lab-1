@@ -29,7 +29,7 @@ resource "aws_security_group" "allow_ssh_http" {
 }
 
 resource "aws_instance" "my-instance" {
-  ami           = "ami-04169656fea786776"
+  ami           = "ami-0b6e9ccdaffb5503f	"
   instance_type = "t3.micro"
   security_groups = [aws_security_group.allow_ssh_http.name]
   key_name      = var.key_name
